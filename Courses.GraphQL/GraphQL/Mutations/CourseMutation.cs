@@ -23,7 +23,22 @@ namespace Courses.GraphQL.GraphQL.Mutations
                     var course = context.GetArgument<Course>("course");
                     return repository.AddCourse(course);
                 });
-                
+
+
+            Field<CourseType>(
+               "updateCourse", // similar to the endpoint name used in rest
+               "Used to update an course",
+               arguments: new QueryArguments(
+                   new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id", Description = "Course id to be updated" },
+                   new QueryArgument<NonNullGraphType<CourseInputType>> { Name = "course", Description = "updated course value" }
+                   ),
+               resolve: context =>
+               {
+                   var id = context.GetArgument<int>("id");
+                   var course = context.GetArgument<Course>("course");
+                   return repository.UpdateCourse(id, course);
+               });
+
         }
     }
 }
