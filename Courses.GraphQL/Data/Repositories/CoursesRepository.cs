@@ -35,7 +35,6 @@ namespace Courses.GraphQL.Data.Repositories
             var _course = _context.Courses.FirstOrDefault(n => n.Id == id);
             _course.Name = course.Name;
             _course.Description = course.Description;
-            _course.Review = course.Review;
             _course.DateUpdated = DateTime.Now;
             _context.SaveChanges();
 
