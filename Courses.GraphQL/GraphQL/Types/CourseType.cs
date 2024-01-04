@@ -17,6 +17,8 @@ namespace Courses.GraphQL.GraphQL.Types
           //  Field(x => x.Review, type: typeof(IntGraphType)).Description(" Course Review");
             Field(x => x.DateAdded, type: typeof(DateTimeGraphType)).Description(" Course Description");
             Field(x => x.DateUpdated, type: typeof(DateTimeGraphType)).Description(" Course Description");
+
+            Field(x => x.Reviews, type: typeof(ListGraphType<ReviewType>)).Description("List Of Reviews");
         }
     }
 }
